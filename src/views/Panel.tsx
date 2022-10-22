@@ -1,8 +1,8 @@
-import React from 'react';
-import { Box, Container, Flex, HStack, Spacer } from '@chakra-ui/react';
-import PanelSettings from '../components/PanelSettings';
+import React from 'react'
+import { Box, Container, Flex, HStack, Spacer } from '@chakra-ui/react'
+import PanelSettings from '../components/PanelSettings'
 
-export default function Panel() {
+export default function Panel () {
   return (
     <Box h="100%">
       <HStack h="100%" padding={2} bgColor="blue.200">
@@ -12,5 +12,5 @@ export default function Panel() {
         </Box>
       </HStack>
     </Box>
-  );
+  )
 }

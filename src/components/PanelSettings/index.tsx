@@ -1,9 +1,9 @@
-import React from 'react';
-import { Box, Button, Flex, Heading, VStack, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select, Stack } from '@chakra-ui/react';
-import Radio from '../base/Radio';
-import ColorPicker from '../base/ColorPicker';
+import React from 'react'
+import { Box, Button, Flex, Heading, VStack, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select, Stack } from '@chakra-ui/react'
+import Radio from '../base/Radio'
+import ColorPicker from '../base/ColorPicker'
 
-function PanelSettings() {
+function PanelSettings () {
   return (
     <VStack spacing="24px" align="start">
       <Box>
@@ -32,7 +32,7 @@ function PanelSettings() {
             { label: 'None', value: 'none' },
             { label: 'Light', value: 'light' },
             { label: 'Moderate', value: 'moderate' },
-            { label: 'Strong', value: 'strong' },
+            { label: 'Strong', value: 'strong' }
           ]}
         />
         <ColorPicker color="484932" onChange={() => {}} />
@@ -45,7 +45,7 @@ function PanelSettings() {
             { label: 'None', value: 0 },
             { label: '90˚ (clock-wise)', value: 90 },
             { label: '90˚ (counterclock-wise)', value: -90 },
-            { label: '180˚', value: 180 },
+            { label: '180˚', value: 180 }
           ]}
         />
       </Box>
@@ -56,7 +56,7 @@ function PanelSettings() {
         </Stack>
       </Box>
     </VStack>
-  );
+  )
 }
 
-export default PanelSettings;
+export default PanelSettings

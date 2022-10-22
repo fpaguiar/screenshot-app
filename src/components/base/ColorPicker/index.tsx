@@ -1,18 +1,17 @@
-import { SketchPicker } from 'react-color';
+import { SketchPicker } from 'react-color'
 
-import type { ColorChangeHandler, Color } from 'react-color';
-import { useState } from 'react';
-import { HStack, Button, Input, InputGroup, InputLeftAddon, Popover, PopoverContent, PopoverBody, PopoverTrigger } from '@chakra-ui/react';
+import type { ColorChangeHandler, Color } from 'react-color'
+import { useState } from 'react'
+import { HStack, Button, Input, InputGroup, InputLeftAddon, Popover, PopoverContent, PopoverBody, PopoverTrigger } from '@chakra-ui/react'
 
-
-type Props = {
-  color: string;
-  onChange: ColorChangeHandler;
+interface Props {
+  color: string
+  onChange: ColorChangeHandler
 }
 
-export default function ColorPicker(props: Props) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [color, setColor] = useState(props.color);
+export default function ColorPicker (props: Props) {
+  const [isVisible, setIsVisible] = useState(false)
+  const [color, setColor] = useState(props.color)
 
   return (
     <HStack>
@@ -39,6 +38,6 @@ export default function ColorPicker(props: Props) {
         </PopoverContent>
         </Popover>
     </HStack>
-    
+
   )
 }

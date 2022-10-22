@@ -1,15 +1,15 @@
-import { createBrowserRouter } from 'react-router-dom';
-import App from './App';
-import Panel from './views/Panel';
+import { createBrowserRouter } from 'react-router-dom'
+import App from './App'
+import Panel from './views/Panel'
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <App />
   },
   {
     path: '/panel',
-    element: <Panel />,
+    element: <Panel />
   },
   {
     path: '/screenshot-overlay',
@@ -19,4 +19,4 @@ export const router = createBrowserRouter([
     path: '/settings',
     element: <div>Settings</div>
   }
-]);
+])

@@ -1,25 +1,25 @@
 
-import type { StackDirection } from '@chakra-ui/react';
-import { Radio as CRadio, RadioGroup, Stack } from "@chakra-ui/react";
-import { useState } from 'react';
+import type { StackDirection } from '@chakra-ui/react'
+import { Radio as CRadio, RadioGroup, Stack } from '@chakra-ui/react'
+import { useState } from 'react'
 
-type Props = {
-  name?: string;
-  id?: string;
-  direction?: StackDirection;
-  options: {
-    label: string;
-    value: string | number;
-  }[];
-};
+interface Props {
+  name?: string
+  id?: string
+  direction?: StackDirection
+  options: Array<{
+    label: string
+    value: string | number
+  }>
+}
 
-export default function Radio({
+export default function Radio ({
   direction = 'row',
   id,
   name,
-  options,
+  options
 }: Props) {
-  const [value, setValue] = useState(options[0].value);
+  const [value, setValue] = useState(options[0].value)
 
   return (
     <RadioGroup

@@ -1,46 +1,45 @@
-import { useState } from 'react';
-import camera from "./assets/camera.svg";
-import { invoke } from "@tauri-apps/api/tauri";
+import { useState } from 'react'
+import camera from './assets/camera.svg'
+import { invoke } from '@tauri-apps/api/tauri'
 
 import { WebviewWindow } from '@tauri-apps/api/window'
 
-import { Button, Center, Container } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Button, Center, Container } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 
+function App () {
+  const [greetMsg, setGreetMsg] = useState('')
+  const [name, setName] = useState('')
 
-function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
+  const [x, setX] = useState(0)
+  const [y, setY] = useState(0)
+  const [width, setWidth] = useState(100)
+  const [height, setHeight] = useState(100)
 
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
-  const [width, setWidth] = useState(100);
-  const [height, setHeight] = useState(100);
-
-  async function greet() {
-    setGreetMsg(await invoke("greet", { name }));
+  async function greet () {
+    setGreetMsg(await invoke('greet', { name }))
   }
 
-  async function screenshot() {
-    await invoke('screenshot', { x, y, width, height });
+  async function screenshot () {
+    await invoke('screenshot', { x, y, width, height })
   }
 
-  function newWindow() {
+  function newWindow () {
     const webview = new WebviewWindow('theUniqueLabel', {
       url: '/test',
       alwaysOnTop: true,
       transparent: true,
       maximized: true,
       decorations: false,
-      resizable: false,
-    });
+      resizable: false
+    })
 
     webview.once('tauri://created', () => {
-      console.log('It worked');
+      console.log('It worked')
     })
 
     webview.once('tauri://error', (e) => {
-      console.error(e);
+      console.error(e)
     })
   }
 
@@ -51,7 +50,7 @@ function App() {
         <Button size="lg">Go to Panel</Button>
       </Link>
     </Center>
-  );
+  )
 }
 
-export default App;
+export default App
