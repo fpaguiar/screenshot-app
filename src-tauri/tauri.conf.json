@@ -56,10 +56,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
-        "resizable": true,
+        "height": 768,
+        "resizable": false,
         "title": "screenshot-app",
-        "width": 800
+        "width": 1366
       }
     ]
   }
