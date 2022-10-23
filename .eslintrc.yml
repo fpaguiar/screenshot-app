@@ -12,7 +12,10 @@ parserOptions:
     - tsconfig.json
 plugins:
   - react
-rules: {}
+rules:
+  max-len:
+    - error
+    - code: 100
 settings:
   react:
     version: detect
