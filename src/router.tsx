@@ -1,6 +1,7 @@
-import { createBrowserRouter } from 'react-router-dom'
 import App from './App'
 import Panel from './views/Panel'
+import React from 'react'
+import { createBrowserRouter } from 'react-router-dom'
 
 export const router = createBrowserRouter([
   {

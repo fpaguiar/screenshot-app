@@ -1,15 +1,24 @@
+import {
+  Button,
+  HStack,
+  Input,
+  InputGroup,
+  InputLeftAddon,
+  Popover,
+  PopoverBody,
+  PopoverContent,
+  PopoverTrigger
+} from '@chakra-ui/react'
+import React, { useState } from 'react'
+import type { ColorChangeHandler } from 'react-color'
 import { SketchPicker } from 'react-color'
-
-import type { ColorChangeHandler, Color } from 'react-color'
-import { useState } from 'react'
-import { HStack, Button, Input, InputGroup, InputLeftAddon, Popover, PopoverContent, PopoverBody, PopoverTrigger } from '@chakra-ui/react'
 
 interface Props {
   color: string
   onChange: ColorChangeHandler
 }
 
-export default function ColorPicker (props: Props) {
+export default function ColorPicker (props: Props): JSX.Element {
   const [isVisible, setIsVisible] = useState(false)
   const [color, setColor] = useState(props.color)
 

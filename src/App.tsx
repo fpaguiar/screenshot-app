@@ -1,47 +1,46 @@
-import { useState } from 'react'
-import camera from './assets/camera.svg'
-import { invoke } from '@tauri-apps/api/tauri'
-
-import { WebviewWindow } from '@tauri-apps/api/window'
-
-import { Button, Center, Container } from '@chakra-ui/react'
+import { Button, Center } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
+import React from 'react'
+// import { useState } from 'react'
+// import { invoke } from '@tauri-apps/api/tauri'
 
-function App () {
-  const [greetMsg, setGreetMsg] = useState('')
-  const [name, setName] = useState('')
+// import { WebviewWindow } from '@tauri-apps/api/window'
 
-  const [x, setX] = useState(0)
-  const [y, setY] = useState(0)
-  const [width, setWidth] = useState(100)
-  const [height, setHeight] = useState(100)
+function App (): JSX.Element {
+  // const [greetMsg, setGreetMsg] = useState('')
+  // const [name, setName] = useState('')
 
-  async function greet () {
-    setGreetMsg(await invoke('greet', { name }))
-  }
+  // const [x, setX] = useState(0)
+  // const [y, setY] = useState(0)
+  // const [width, setWidth] = useState(100)
+  // const [height, setHeight] = useState(100)
 
-  async function screenshot () {
-    await invoke('screenshot', { x, y, width, height })
-  }
+  // async function greet () {
+  //   setGreetMsg(await invoke('greet', { name }))
+  // }
 
-  function newWindow () {
-    const webview = new WebviewWindow('theUniqueLabel', {
-      url: '/test',
-      alwaysOnTop: true,
-      transparent: true,
-      maximized: true,
-      decorations: false,
-      resizable: false
-    })
+  // async function screenshot () {
+  //   await invoke('screenshot', { x, y, width, height })
+  // }
 
-    webview.once('tauri://created', () => {
-      console.log('It worked')
-    })
+  // function newWindow () {
+  //   const webview = new WebviewWindow('theUniqueLabel', {
+  //     url: '/test',
+  //     alwaysOnTop: true,
+  //     transparent: true,
+  //     maximized: true,
+  //     decorations: false,
+  //     resizable: false
+  //   })
 
-    webview.once('tauri://error', (e) => {
-      console.error(e)
-    })
-  }
+  //   webview.once('tauri://created', () => {
+  //     console.log('It worked')
+  //   })
+
+  //   webview.once('tauri://error', (e) => {
+  //     console.error(e)
+  //   })
+  // }
 
   return (
     <Center h="100%">

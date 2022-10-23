@@ -16,6 +16,7 @@ rules:
   max-len:
     - error
     - code: 100
+  sort-imports: error
 settings:
   react:
     version: detect

@@ -1,7 +1,7 @@
 
-import type { StackDirection } from '@chakra-ui/react'
 import { Radio as CRadio, RadioGroup, Stack } from '@chakra-ui/react'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import type { StackDirection } from '@chakra-ui/react'
 
 interface Props {
   name?: string
@@ -18,7 +18,7 @@ export default function Radio ({
   id,
   name,
   options
-}: Props) {
+}: Props): JSX.Element {
   const [value, setValue] = useState(options[0].value)
 
   return (

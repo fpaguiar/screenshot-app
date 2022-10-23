@@ -1,9 +1,23 @@
-import React from 'react'
-import { Box, Button, Flex, Heading, VStack, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select, Stack } from '@chakra-ui/react'
-import Radio from '../base/Radio'
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Input,
+  NumberDecrementStepper,
+  NumberIncrementStepper,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  Select,
+  Stack,
+  VStack
+} from '@chakra-ui/react'
 import ColorPicker from '../base/ColorPicker'
+import Radio from '../base/Radio'
+import React from 'react'
 
-function PanelSettings () {
+function PanelSettings (): JSX.Element {
   return (
     <VStack spacing="24px" align="start">
       <Box>
