@@ -1,42 +1,77 @@
 import {
   Box,
   Button,
-  Flex,
+  FormControl,
+  FormLabel,
+  HStack,
   Heading,
-  Input,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
-  Select,
   Stack,
   VStack
 } from '@chakra-ui/react'
 import ColorPicker from '../base/ColorPicker'
 import Radio from '../base/Radio'
-import React from 'react'
+import React, { useState } from 'react'
+// import { useForm } from 'react-hook-form'
+
+// type Inputs = {
+//   borderWidth: number
+//   borderRadius: number
+//   borderColor: string
+//   shadowType: string
+//   shadowColor: string
+//   rotationType: string
+// }
+
+type ShadowStyle = 'None' | 'Light' | 'Moderate' | 'Strong'
+type Rotation = 0 | 90 | -90 | 180
 
 function PanelSettings (): JSX.Element {
+  // const { handleSubmit, register } = useForm<Inputs>()
+  const [borderWidth, setBorderWidth] = useState(1)
+  const [borderRadius, setBorderRadius] = useState(0)
+  const [borderColour, setBorderColour] = useState('000000')
+  const [shadowStyle, setShadowStyle] = useState<ShadowStyle>('None')
+  const [shadowColour, setShadowColour] = useState('000000')
+  const [rotation, setRotation] = useState<Rotation>(0)
+
   return (
     <VStack spacing="24px" align="start">
       <Box>
         <Heading size="md" mb={1}>Border</Heading>
-        <Flex>
-          <Select placeholder='Size'>
-            <option value='option1'>Option 1</option>
-            <option value='option2'>Option 2</option>
-            <option value='option3'>Option 3</option>
-          </Select>
-          <NumberInput defaultValue={0} max={30} clampValueOnBlur={false}>
-            <NumberInputField />
-            <NumberInputStepper>
-              <NumberIncrementStepper />
-              <NumberDecrementStepper />
-            </NumberInputStepper>
-          </NumberInput>
-          <Input placeholder='#000000' />
-        </Flex>
+        <HStack spacing={2}>
+          <FormControl>
+            <FormLabel>Width</FormLabel>
+            <NumberInput defaultValue={0} max={30} clampValueOnBlur={false}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </FormControl>
+          <FormControl>
+            <FormLabel>Radius</FormLabel>
+            <NumberInput defaultValue={0} max={30} clampValueOnBlur={false}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </FormControl>
+          <FormControl>
+            <FormLabel>Color</FormLabel>
+            <ColorPicker
+              colour={borderColour}
+              onChange={setBorderColour}
+            />
+          </FormControl>
+        </HStack>
       </Box>
       <Box>
       <Heading size="md" mb={1}>Shadow</Heading>
@@ -49,7 +84,10 @@ function PanelSettings (): JSX.Element {
             { label: 'Strong', value: 'strong' }
           ]}
         />
-        <ColorPicker color="484932" onChange={() => {}} />
+        <ColorPicker
+          colour={shadowColour}
+          onChange={setShadowColour}
+        />
       </Box>
       <Box>
       <Heading size="md" mb={1}>Rotation</Heading>
