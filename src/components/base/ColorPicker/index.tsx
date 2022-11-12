@@ -7,7 +7,8 @@ import {
   Popover,
   PopoverBody,
   PopoverContent,
-  PopoverTrigger
+  PopoverTrigger,
+  Portal
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { SketchPicker } from 'react-color'
@@ -44,20 +45,22 @@ export default function ColorPicker (props: Props): JSX.Element {
         <PopoverTrigger>
           <Button onClick={() => setIsVisible(!isVisible)} bg={`#${props.colour}`} _hover={{}} />
         </PopoverTrigger>
-        <PopoverContent
-          bgColor="transparent"
-          shadow="none"
-          w="fit-content"
-          border="none"
-        >
-          <PopoverBody>
-            <SketchPicker
-              color={props.colour}
-              onChange={(colour) => handleColourChange(normalizeHexColor(colour.hex))}
-            />
-          </PopoverBody>
-        </PopoverContent>
-        </Popover>
+        <Portal>
+          <PopoverContent
+            bgColor="transparent"
+            shadow="none"
+            w="fit-content"
+            border="none"
+          >
+            <PopoverBody>
+              <SketchPicker
+                color={props.colour}
+                onChange={(colour) => handleColourChange(normalizeHexColor(colour.hex))}
+              />
+            </PopoverBody>
+          </PopoverContent>
+        </Portal>
+      </Popover>
     </HStack>
 
   )
