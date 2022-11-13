@@ -4,7 +4,8 @@ import React from 'react'
 // import { useState } from 'react'
 // import { invoke } from '@tauri-apps/api/tauri'
 
-// import { WebviewWindow } from '@tauri-apps/api/window'
+import { WINDOWLABEL_OVERLAY } from './contants'
+import { WebviewWindow } from '@tauri-apps/api/window'
 
 function App (): JSX.Element {
   // const [greetMsg, setGreetMsg] = useState('')
@@ -23,24 +24,26 @@ function App (): JSX.Element {
   //   await invoke('screenshot', { x, y, width, height })
   // }
 
-  // function newWindow () {
-  //   const webview = new WebviewWindow('theUniqueLabel', {
-  //     url: '/test',
-  //     alwaysOnTop: true,
-  //     transparent: true,
-  //     maximized: true,
-  //     decorations: false,
-  //     resizable: false
-  //   })
+  function newWindow (): void {
+    const webview = new WebviewWindow(WINDOWLABEL_OVERLAY, {
+      url: '/screenshot-overlay',
+      // alwaysOnTop: true,
+      transparent: true,
+      maximized: true,
+      // decorations: false,
+      resizable: false
+    })
 
-  //   webview.once('tauri://created', () => {
-  //     console.log('It worked')
-  //   })
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    webview.once('tauri://created', () => {
+      console.log('It worked')
+    })
 
-  //   webview.once('tauri://error', (e) => {
-  //     console.error(e)
-  //   })
-  // }
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    webview.once('tauri://error', (e) => {
+      console.error(e)
+    })
+  }
 
   return (
     <Center h="100%">
@@ -48,6 +51,7 @@ function App (): JSX.Element {
       <Link to={'/panel'}>
         <Button size="lg">Go to Panel</Button>
       </Link>
+      <Button onClick={() => newWindow()}>Start</Button>
     </Center>
   )
 }

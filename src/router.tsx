@@ -1,4 +1,5 @@
 import App from './App'
+import OverlayView from './views/OverlayView'
 import Panel from './views/Panel'
 import React from 'react'
 import { createBrowserRouter } from 'react-router-dom'
@@ -14,7 +15,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/screenshot-overlay',
-    element: <div>Screenshot Overlay</div>
+    element: <OverlayView />
   },
   {
     path: '/settings',
