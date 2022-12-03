@@ -1,10 +1,15 @@
 import React, { useRef, useState } from 'react'
 import { WINDOWLABEL_OVERLAY } from '../../contants'
 import { WebviewWindow } from '@tauri-apps/api/window'
-
+import { invoke } from '@tauri-apps/api/tauri'
 interface Coords {
   x: number
   y: number
+}
+
+interface Dimensions {
+  height: number
+  width: number
 }
 
 interface CanvasControls {
@@ -16,6 +21,7 @@ export default function Overlay (): JSX.Element {
   const canvasRef = useRef(null)
 
   const [coords, setCoords] = useState<Coords>({ x: 0, y: 0 })
+  const [dimensions, setDimensions] = useState<Dimensions>({ height: 0, width: 0 })
 
   function getCanvasControls (): CanvasControls {
     const canvas = canvasRef.current as unknown as HTMLCanvasElement
@@ -51,11 +57,22 @@ export default function Overlay (): JSX.Element {
   function handleMouseUp (e: React.MouseEvent<HTMLCanvasElement, MouseEvent>): void {
     eraseCanvas()
 
-    const webview = new WebviewWindow(WINDOWLABEL_OVERLAY)
+    invoke('screenshot', {
+      x: coords.x,
+      y: coords.y,
+      width: dimensions.width,
+      height: dimensions.height
+    })
+      .then(() => {
+        const webview = new WebviewWindow(WINDOWLABEL_OVERLAY)
 
-    webview.close()
-      .then(() => console.log('overlay closed'))
-      .catch((err) => console.log(err))
+        webview.close()
+          .then(() => console.log('overlay closed'))
+          .catch((err) => console.log(err))
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
   function handleMouseMove (e: React.MouseEvent<HTMLCanvasElement, MouseEvent>): void {
@@ -66,6 +83,7 @@ export default function Overlay (): JSX.Element {
 
     if (e.buttons === 1 && Math.abs(width) >= 5 && Math.abs(height) >= 5) {
       drawSelection(x, y, width, height)
+      setDimensions({ height, width })
     }
   }
 
